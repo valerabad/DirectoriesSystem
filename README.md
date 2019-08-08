@@ -1,5 +1,5 @@
 # DirectoriesSystem
- test app for apriorit
+ Test app for apriorit.
 
 1) The database FolderDB.mdf is created automatically and saved to the folder AppData at startup
 2) At startup the database is initialized by testing data from task
