@@ -15,13 +15,13 @@ namespace DirectoriesSystem.Controllers
             string curPath = HttpContext.Request.Url.LocalPath;
             string host = HttpContext.Request.Url.Authority;
 
-
-            Folder f1 = db.Folder.FirstOrDefault(s => @"/" + s.Path == curPath.Replace("%20", " "));
-            if (f1 != null)
+            Folder curFolder = db.Folder.FirstOrDefault(s => @"/" + s.Path == curPath.Replace("%20", " "));
+            if (curFolder != null)
             {
                 ViewBag.ReferRoot = null;
-                ViewBag.folderTitle = f1.Name;
-                List<Folder> childFoldersList = f1.Children;
+                ViewBag.folderTitle = curFolder.Name;
+                ViewBag.Host = "http://" + host;
+                List<Folder> childFoldersList = curFolder.Children;
                 ViewBag.childFoldersList = childFoldersList;
 
             }
@@ -32,38 +32,14 @@ namespace DirectoriesSystem.Controllers
                     Folder f = db.Folder.FirstOrDefault();
                     if (f != null)
                     {
-
                         ViewBag.folderTitle = f.Name;
-                        ViewBag.ReferRoot = "http://" + host + @"/" + f.Path.Replace(" ", "%20");
-                        //List<Folder> childFoldersList = f.Children;
-                        //ViewBag.childFoldersList = childFoldersList;
+                        ViewBag.ReferRoot = "http://" + host + @"/" + f.Path.Replace(" ", "%20");                       
                     }
-                }
-                // Folder f = db.Folder.FirstOrDefault();
-
+                }             
             }
 
             return View("Index");
-        }
-
-        [HttpPost]
-        public ActionResult Index(string url)
-        {
-            return View();
-        }
-
-            public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
+        }       
+      
     }
 }

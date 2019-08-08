@@ -1,22 +1,26 @@
-﻿@model IEnumerable<DirectoriesSystem.Models.Folder>
+﻿
 @using DirectoriesSystem.Models;
 @{
     ViewBag.Title = "Index";
 }
 
 <h1 style="font-weight:bold">Folder: @ViewBag.folderTitle</h1>
+
 <br />
+
 @if (@ViewBag.ReferRoot != null)
 {
+    <p>Open root catalog:</p>
     <a href=@ViewBag.ReferRoot>@ViewBag.folderTitle</a>
 }
 
 <br />
+
 @if (@ViewBag.childFoldersList != null)
 {
     foreach (Folder item in ViewBag.childFoldersList)
     {
-        <a href="@item.Path.Replace(" ", "%20")">@item.Name</a>
+        <a href="@ViewBag.Host/@item.Path.Replace(" ", "%20")">@item.Name</a>
         <br />
     }
 }
