@@ -3,17 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Data.Entity;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DirectoriesSystem.Models
 {       
+    [Table("Folder")]
     public class Folder
-    {              
-        public int id { get; set; }
-        //public int? ParentId { get; set; }
-        public string Name { get; set; }
-        public string Other { get; set; }
-        public string Path { get; set; }
-        public virtual List<Folder> Children { get; set; }
-
+    {
+        [Key]
+        public int ID { get; set; }
+        public int? ParentId { get; set; }
+        public String Name { get; set; }
+        public String Other { get; set; }
+        public String Path { get; set; }        
     }
 }

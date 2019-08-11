@@ -21,8 +21,12 @@ namespace DirectoriesSystem.Controllers
                 ViewBag.ReferRoot = null;
                 ViewBag.folderTitle = curFolder.Name;
                 ViewBag.Host = "http://" + host;
-                List<Folder> childFoldersList = curFolder.Children;
-                ViewBag.childFoldersList = childFoldersList;
+                
+                List<Folder> result = (from f in db.Folder
+                                       where f.ParentId == curFolder.ID
+                                       select f).ToList();                    
+                
+                ViewBag.childFoldersList = result;
 
             }
             else
@@ -33,9 +37,9 @@ namespace DirectoriesSystem.Controllers
                     if (f != null)
                     {
                         ViewBag.folderTitle = f.Name;
-                        ViewBag.ReferRoot = "http://" + host + @"/" + f.Path.Replace(" ", "%20");                       
+                        ViewBag.ReferRoot = "http://" + host + @"/" + f.Path.Replace(" ", "%20");
                     }
-                }             
+                }
             }
 
             return View("Index");
