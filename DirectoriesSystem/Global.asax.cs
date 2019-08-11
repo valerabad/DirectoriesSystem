@@ -14,7 +14,7 @@ namespace DirectoriesSystem
     {
         protected void Application_Start()
         {
-            Database.SetInitializer(new FoldersDbInitializer());
+            //Database.SetInitializer(new Configuration());
 
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
