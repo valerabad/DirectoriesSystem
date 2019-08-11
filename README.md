@@ -9,4 +9,4 @@ Used:
 1. ASP.NET MVC
 2. EntityFramework
 
-Created the "2-approach" branch where I have changed a model and Seed method a litle
+Created the "2-approach" branch where I have changed a model and Seed method
